@@ -22,7 +22,7 @@ pipeline {
         script{
           echo 'building the docker image...'
           withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]){
-            sh 'docker build -t  joaneeet7/demo-app:jma-2.0 .'
+            sh 'docker build -t joaneeet7/demo-app:jma-2.0 .'
             sh 'echo $PASS | docker login -u $USER --password-stdin'
             sh 'docker push joaneeet7/demo-app:jma-2.0'
           }
